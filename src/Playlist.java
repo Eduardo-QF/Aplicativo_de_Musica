@@ -2,30 +2,32 @@ import java.util.ArrayList;
 
 class Playlist {
 
-    private String nome;
-    private ArrayList<Musica> musicas;
+    protected String nome;
+    protected ArrayList<Musica> musicas;
+    protected String descricao;
 
-    // Construtor padrão — chama o parametrizado com valor default
     public Playlist() {
         this("Sem nome");
     }
 
-    // Construtor parametrizado — valida o nome e inicializa a lista
     public Playlist(String nome) {
         setNome(nome);
         this.musicas = new ArrayList<>();
+        this.descricao = "";
     }
 
-    // Getters
     public String getNome() {
         return nome;
     }
 
     public ArrayList<Musica> getMusicas() {
-        return new ArrayList<>(musicas); // cópia defensiva para proteger a lista interna
+        return new ArrayList<>(musicas);
     }
 
-    // Setter com validação
+    public String getDescricao() {
+        return descricao;
+    }
+
     public void setNome(String nome) {
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome da playlist não pode ser nulo ou vazio.");
@@ -33,7 +35,10 @@ class Playlist {
         this.nome = nome.trim();
     }
 
-    // Métodos
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public void adicionarMusica(Musica musica) {
         if (musica == null) {
             throw new IllegalArgumentException("Não é possível adicionar uma música nula.");
@@ -71,5 +76,12 @@ class Playlist {
 
     public int getQuantidadeMusicas() {
         return musicas.size();
+    }
+
+    public void reproduzir() {
+        System.out.println("🎵 Reproduzindo playlist: " + nome);
+        for (Musica m : musicas) {
+            System.out.println("  ▶ " + m.getTitulo());
+        }
     }
 }

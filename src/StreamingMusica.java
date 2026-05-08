@@ -239,7 +239,27 @@ public class StreamingMusica {
         try {
             System.out.print("Nome da playlist: ");
             String nome = scanner.nextLine();
-            usuario.criarPlaylist(nome);
+
+            System.out.println("Tipo de playlist:");
+            System.out.println("1. Normal");
+            System.out.println("2. Automática");
+            System.out.print("Escolha: ");
+            int tipo = lerOpcao();
+
+            if (tipo == 2) {
+                System.out.print("Critério (top/recomendadas/recentes): ");
+                String criterio = scanner.nextLine();
+
+                PlaylistAutomatica pa = new PlaylistAutomatica(nome, criterio);
+                pa.atualizar(musicas);
+
+                usuario.adicionarPlaylist(pa);
+                System.out.println("✅ Playlist automática criada!");
+
+            } else {
+                usuario.criarPlaylist(nome);
+            }
+
         } catch (IllegalArgumentException e) {
             System.out.println("Erro: " + e.getMessage());
         }

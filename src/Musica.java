@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 class Musica {
 
     private static final String[] GENEROS_VALIDOS = {"Pop", "Rock", "Jazz", "Eletrônica", "Hip-Hop", "Clássica"};
@@ -7,20 +9,24 @@ class Musica {
     private int duracaoSegundos;
     private String genero;
 
-    // Construtor padrão — chama o parametrizado com valores default
+    private int numeroReproducoes;
+    private boolean recomendada;
+    private LocalDate dataAdicao;
+
     public Musica() {
         this("Sem título", "Desconhecido", 1, "Pop");
     }
 
-    // Construtor parametrizado — valida os dados ao criar o objeto
     public Musica(String titulo, String artista, int duracaoSegundos, String genero) {
         setTitulo(titulo);
         setArtista(artista);
         setDuracaoSegundos(duracaoSegundos);
         setGenero(genero);
+        this.numeroReproducoes = 0;
+        this.recomendada = false;
+        this.dataAdicao = LocalDate.now();
     }
 
-    // Getters
     public String getTitulo() {
         return titulo;
     }
@@ -41,7 +47,36 @@ class Musica {
         return GENEROS_VALIDOS;
     }
 
-    // Setters com validação
+    public int getNumeroReproducoes() {
+        return numeroReproducoes;
+    }
+
+    public boolean isRecomendada() {
+        return recomendada;
+    }
+
+    public LocalDate getDataAdicao() {
+        return dataAdicao;
+    }
+
+    public void setNumeroReproducoes(int numeroReproducoes) {
+        if (numeroReproducoes < 0) {
+            throw new IllegalArgumentException("Número de reproduções não pode ser negativo.");
+        }
+        this.numeroReproducoes = numeroReproducoes;
+    }
+
+    public void setRecomendada(boolean recomendada) {
+        this.recomendada = recomendada;
+    }
+
+    public void setDataAdicao(LocalDate dataAdicao) {
+        if (dataAdicao == null) {
+            throw new IllegalArgumentException("Data não pode ser nula.");
+        }
+        this.dataAdicao = dataAdicao;
+    }
+
     public void setTitulo(String titulo) {
         if (titulo == null || titulo.isBlank()) {
             throw new IllegalArgumentException("Título não pode ser nulo ou vazio.");
@@ -72,14 +107,13 @@ class Musica {
         }
         for (String g : GENEROS_VALIDOS) {
             if (g.equalsIgnoreCase(genero.trim())) {
-                this.genero = g; // armazena sempre no formato padrão (ex: "Rock")
+                this.genero = g;
                 return;
             }
         }
         throw new IllegalArgumentException("Gênero inválido. Escolha entre: Pop, Rock, Jazz, Eletrônica, Hip-Hop, Clássica.");
     }
 
-    // Métodos
     public void exibir() {
         System.out.printf("Título: %s | Artista: %s | Duração: %s | Gênero: %s%n",
                 titulo, artista, getDuracaoFormatada(), genero);

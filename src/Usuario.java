@@ -68,6 +68,12 @@ class Usuario {
         if (playlist == null) {
             throw new IllegalArgumentException("Não é possível adicionar uma playlist nula.");
         }
+
+        if (this instanceof UsuarioFree && playlists.size() >= 3) {
+            System.out.println("❌ Usuários Free podem ter no máximo 3 playlists.");
+            return;
+        }
+
         playlists.add(playlist);
     }
 
