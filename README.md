@@ -104,7 +104,6 @@ Importe o projeto em uma IDE como IntelliJ IDEA ou Eclipse e execute a classe `S
 ## 📅 Histórico de Checkpoints
 
 ### CP1 — Estrutura Procedural Base
-> Prazo: Aula 1 · Entrega via Git
 
 Implementação inicial do sistema em estilo procedural, com menus de navegação e as funcionalidades centrais funcionando:
 
@@ -119,7 +118,6 @@ Implementação inicial do sistema em estilo procedural, com menus de navegaçã
 ---
 
 ### CP2 — Refatoração para Orientação a Objetos
-> Prazo: 27/03 23:59 · Entrega via Git (branch)
 
 Refatoração do código procedural do CP1 para usar **Orientação a Objetos**, criando classes que representam as entidades do sistema:
 
@@ -130,7 +128,6 @@ Refatoração do código procedural do CP1 para usar **Orientação a Objetos**,
 ---
 
 ### CP3 — Encapsulamento e Construtores
-> Refatoração das classes do CP2
 
 Aplicação de **encapsulamento** e **construtores** em todas as classes. Todos os atributos tornados `private`, acessados exclusivamente via getters e setters com validações. Construtores garantem que objetos sejam criados em estado válido desde o início:
 
@@ -141,7 +138,6 @@ Aplicação de **encapsulamento** e **construtores** em todas as classes. Todos 
 ---
 
 ### CP4 — Herança
-> Criação de hierarquias de classes
 
 Implementação de **hierarquias de classes** usando herança para suportar diferentes tipos de usuários (Free e Premium) com comportamentos distintos:
 
@@ -159,7 +155,6 @@ Usuario (classe base)
 ---
 
 ### CP5 — Polimorfismo
-> Aplicação de polimorfismo ao sistema
 
 Aplicação de **polimorfismo** para permitir que diferentes tipos de usuários e playlists sejam tratados de forma genérica, mas com comportamentos específicos:
 
@@ -179,7 +174,6 @@ usuario.reproduzirMusica(musica); // "🎵 Reproduzindo em ALTA QUALIDADE..."
 ---
 
 ### CP6 — Interfaces, Pacotes e Finalização
-> Checkpoint final
 
 Criação de **interfaces**, organização do código em **pacotes profissionais** e finalização do sistema completo demonstrando domínio de todos os conceitos de POO:
 
